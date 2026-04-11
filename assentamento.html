@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assentamento &mdash; Memorabilia &middot; Brain Codex</title>
+<meta name="description" content="Assentamento — a Brain Codex memorabilia piece. Reflections on settlement, roots, and the neurobiology of place.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Felipe Heemann">
+<link rel="canonical" href="https://braincodex.com.br/assentamento.html">
+<meta property="og:title" content="Assentamento — Brain Codex Memorabilia">
+<meta property="og:description" content="Reflections on settlement, roots, and the neurobiology of place.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://braincodex.com.br/assentamento.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Brain Codex">
+<meta property="og:image" content="https://braincodex.com.br/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Assentamento — Brain Codex Memorabilia">
+<meta name="twitter:description" content="Reflections on settlement, roots, and the neurobiology of place.">
+<meta name="twitter:image" content="https://braincodex.com.br/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14;
+  --ink-2: #111821;
+  --ink-3: #18212e;
+  --parchment: #f0ebe3;
+  --parchment-dim: rgba(240,235,227,0.7);
+  --parchment-muted: rgba(240,235,227,0.45);
+  --gold: #c9a96e;
+  --gold-light: #e0c992;
+  --gold-dim: rgba(201,169,110,0.3);
+  --teal: #1a5568;
+  --teal-mid: #257a8f;
+  --teal-light: #3eabc4;
+  --teal-glow: rgba(62,171,196,0.15);
+  --line: rgba(201,169,110,0.15);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:17px; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  line-height: 1.78;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999;
+}
+a { color: var(--teal-light); text-decoration:none; transition: color 0.3s; }
+a:hover { color: var(--gold); }
+.container { max-width:1200px; margin:0 auto; padding:0 2.5rem; }
+.reveal {
+  opacity:0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity:1; transform: translateY(0); }
+
+/* --- Nav --- */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+  transition: background 0.4s;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-brand-text {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+}
+.nav-brand-text span { display:block; font-size:0.5rem; letter-spacing:0.45em; color: var(--teal-light); margin-top:1px; white-space:nowrap; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--parchment); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-toggle { display:none; background:none; border:none; color: var(--parchment); font-size:1.5rem; cursor:pointer; }
+@media (max-width:768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-toggle { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background: rgba(10,14,20,0.98); flex-direction:column; padding:2rem; gap:1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open { display:flex; }
+}
+
+/* --- Dropdown Nav --- */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.nav-submenu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); padding: 0.8rem 0; min-width: 180px;
+  list-style: none; z-index: 200; padding-top: 1rem;
+}
+.nav-submenu::before {
+  content: ''; position: absolute; top: -1rem; left: 0; right: 0; height: 1rem;
+}
+.nav-dropdown:hover > .nav-submenu,
+.nav-dropdown:focus-within > .nav-submenu { display: flex; flex-direction: column; }
+.nav-submenu li { padding: 0; }
+.nav-submenu a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; padding: 0.5rem 1.4rem; display: block; transition: color 0.3s, background 0.3s;
+}
+.nav-submenu a:hover, .nav-submenu a.active { color: var(--parchment); background: rgba(201,169,110,0.08); }
+
+/* --- Back link --- */
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  margin-bottom: 2rem; transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* --- Memorabilia page --- */
+.memo-hero {
+  width: 100%;
+  height: 70vh; min-height: 480px;
+  overflow: hidden; position: relative;
+  margin-top: 60px;
+  background-size: cover;
+  background-position: center center;
+  background-color: var(--ink-3);
+}
+.memo-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(10,14,20,0.38);
+  z-index: 1;
+}
+.memo-hero img { display: none; }
+.memo-hero-credit {
+  position: absolute; bottom: 0.8rem; right: 1.2rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 0.55rem;
+  letter-spacing: 0.12em; color: rgba(240,235,227,0.45); text-transform: uppercase;
+  z-index: 2;
+}
+.memo-hero-quote {
+  position: absolute;
+  bottom: 12%; left: 5%;
+  max-width: 42%;
+  padding: 1.3rem 1.5rem;
+  background: rgba(10,14,20,0.40);
+  backdrop-filter: blur(3px);
+  border-left: 1px solid rgba(201,169,110,0.55);
+  z-index: 2;
+}
+.memo-hero-quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-style: italic; font-weight: 300;
+  line-height: 1.65;
+  color: rgba(240,235,227,0.92);
+  margin-bottom: 0.65rem;
+}
+.memo-hero-quote cite {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; font-style: normal; font-weight: 300;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); display: block;
+}
+@media (max-width: 768px) {
+  .memo-hero { height: 50vh; min-height: 320px; }
+  .memo-hero-quote { max-width: 72%; bottom: 8%; }
+}
+.memo-content {
+  max-width: 720px; margin: 0 auto; padding: 4rem 2.5rem 6rem;
+}
+.memo-content h1 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.15;
+  color: var(--parchment); margin-bottom: 2rem; letter-spacing: -0.01em;
+}
+.memo-section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 300; font-style: italic;
+  color: var(--parchment); line-height: 1.2;
+  margin-bottom: 1.2rem; letter-spacing: 0.01em;
+}
+.memo-author {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.7rem;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+.memo-body {
+  font-size: 1.08rem; color: var(--parchment-dim); line-height: 1.82; margin-bottom: 2rem;
+}
+.memo-source {
+  font-size: 0.93rem; color: var(--parchment-muted); margin-bottom: 0.15rem;
+}
+.memo-citation {
+  font-size: 0.93rem; font-style: italic; color: var(--parchment-muted); margin-bottom: 3rem;
+  padding-left: 1.2rem; border-left: 1px solid var(--gold-dim);
+}
+.memo-divider {
+  border: none; border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+/* --- Footer --- */
+footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
+.footer-logo {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--parchment-muted); margin-bottom:0.5rem;
+}
+.footer-copy { font-size:0.75rem; color:rgba(240,235,227,0.3); }
+
+@media (max-width:768px) {
+  .memo-content { padding: 3rem 1.5rem 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Brain Codex - Home">
+    <div class="nav-brand-text">Brain Codex<span>Neuroscience &amp; Philosophy</span></div>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#catalog">Catalog</a></li>
+    <li><a href="incisions.html">Incisions</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Memorabilia <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:3px;"><polyline points="6 9 12 15 18 9"/></svg></a>
+      <ul class="nav-submenu">
+        <li><a href="foundation.html">Foundation</a></li>
+        <li><a href="annotated_canon.html">Annotated Canon</a></li>
+        <li><a href="epistemic_bedrock.html">Epistemic Bedrock</a></li>
+        <li><a href="pessoa.html">Pessoa</a></li>
+        <li><a href="assentamento.html" class="active">Assentamento</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="memo-hero" style="background-image:url('assentamento-cover.jpg');">
+  <div class="memo-hero-quote">
+    <p>H&aacute; grandeza nessa no&ccedil;&atilde;o da vida, com seus v&aacute;rios poderes, tendo sido originalmente soprada em algumas poucas formas ou em apenas uma&hellip;</p>
+    <cite>Charles Darwin</cite>
+  </div>
+  <span class="memo-hero-credit">Placeholder &middot; Pexels.com</span>
+</div>
+
+<div class="memo-content reveal">
+  <a href="index.html" class="back-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Brain Codex</a>
+  <h1>Assentamento</h1>
+
+  <p class="memo-author">Charles Robert Darwin (1809&ndash;1882)</p>
+  <h2 class="memo-section-title">Infinitas formas</h2>
+  <p class="memo-body">&Eacute; interessante contemplar um barranco intrincado, atapetado com plantas de todos os tipos, com p&aacute;ssaros cantando nos arbustos, com v&aacute;rios insetos voando aqui e ali e vermes rastejando pela terra &uacute;mida, e refletir que essas formas elaboradamente constru&iacute;das, t&atilde;o diferentes umas das outras, e dependentes uma das outras de um modo t&atilde;o complexo, foram todas produzidas por leis que atuam &agrave; nossa volta. [&hellip;] Assim, da guerra da natureza, da fome e da morte, forma-se o mais exaltado objeto que se &eacute; capaz de conceber, nomeadamente, a produ&ccedil;&atilde;o de animais complexos. H&aacute; grandeza nessa no&ccedil;&atilde;o da vida, com seus v&aacute;rios poderes, tendo sido originalmente soprada em algumas poucas formas ou em apenas uma; e que, enquanto o planeta girava de acordo com a lei fixa da gravidade, de um in&iacute;cio t&atilde;o simples, um n&uacute;mero infinito de formas, as mais belas e maravilhosas, evoluiu e continua a evoluir.</p>
+  <p class="memo-source">Charles Robert Darwin, <em>Origem das esp&eacute;cies</em>, 1&ordf; edi&ccedil;&atilde;o.</p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Isaac Newton (1643&ndash;1727)</p>
+  <h2 class="memo-section-title">Grande oceano da verdade</h2>
+  <p class="memo-body">N&atilde;o sei o que posso aparentar ao mundo, mas a mim mesmo pare&ccedil;o ser apenas um menino brincando &agrave; beira da praia, e me divertindo de vez em quando ao encontrar uma pedra mais polida ou uma concha de beleza singular, enquanto o grande oceano da verdade estende-se indescoberto diante de mim.</p>
+  <p class="memo-source">Isaac Newton, <em>Memoirs of the life, writings and discoveries of Sir Isaac Newton</em> (1855), de David Brester (volume 2, cap&iacute;tulo 27).</p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Carl Sagan (1934&ndash;1996)</p>
+  <h2 class="memo-section-title">Arena c&oacute;smica</h2>
+  <p class="memo-body">As fotografias Apollo da Terra inteira transmitiram &agrave;s multid&otilde;es algo bem conhecidos dos astr&ocirc;nomos: na escala de mundos &ndash; para n&atilde;o falar da escala de estrelas ou gal&aacute;xias &ndash; os seres humanos s&atilde;o insignificantes, uma pel&iacute;cula fina de vida sobre um bloco obscuro e solit&aacute;rio de rocha e metal.<br><br>
+  Parecia-me que outra fotografia da Terra, tirada de um ponto de centenas de milhares de vezes mais distantes, poderia ajudar no processo cont&iacute;nuo de revelar-nos nossa verdadeira circunst&acirc;ncia e condi&ccedil;&atilde;o. Os cientistas e fil&oacute;sofos da Antig&uuml;idade cl&aacute;ssica tinham compreendido muito bem que a Terra era um simples ponto num vasto cosmo circundante, mas ningu&eacute;m jamais a vira nessa condi&ccedil;&atilde;o. Era a nossa primeira oportunidade (e tamb&eacute;m a &uacute;ltima em v&aacute;rias d&eacute;cadas). [&hellip;]<br><br>
+  N&oacute;s podemos explicar o azul-p&aacute;lido desse pequeno mundo porque conhecemos muito bem. Se um cientista extraterrestre, rec&eacute;m chegado &agrave;simedia&ccedil;&otilde;es do nosso Sistema Solar, poderia fidedignamente inferir oceanos, nuvens e uma atmosfera espessa, j&aacute; n&atilde;o &eacute; t&atilde;o certo. Netuno, por exemplo, &eacute; azul, mas por raz&otilde;es inteiramente diferentes. Desse ponto de observa&ccedil;&atilde;o, a Terra talvez n&atilde;o apresentasse nenhum interesse especial.<br><br>
+  Para n&oacute;s, no entanto, ela &eacute; diferente. Olhem de novo para o ponto. &Eacute; ali. &Eacute; a nossa casa. Somos n&oacute;s. Nesse ponto, todos aqueles que amamos, que conhecemos, de quem j&aacute; ouvimos falar, todos os seres humanos que j&aacute; existiram, vivem ou viveram as suas vidas. Toda a nossa mistura de alegria e sofrimento, todas as in&uacute;meras religi&otilde;es, ideologias e doutrinas econ&ocirc;micas, todos os ca&ccedil;adores e saqueadores, her&oacute;is e covardes, criadores e destruidores de civiliza&ccedil;&otilde;es, reis e camponeses, jovens casais apaixonados, pais e m&atilde;es, todas as crian&ccedil;as, todos os inventores e exploradores, professores de moral, pol&iacute;ticos corruptos, &ldquo;superastros&rdquo;, &ldquo;l&iacute;deres supremos&rdquo;, todos os santos e pecadores da hist&oacute;ria da nossa esp&eacute;cie, ali &ndash; num gr&atilde;o de poeira suspenso num raio de sol.<br><br>
+  A Terra &eacute; um palco muito pequeno em uma imensa arena c&oacute;smica. Pensem nos rios de sangue derramados por todos os generais e imperadores para que, na gl&oacute;ria do triunfo, pudessem ser os senhores moment&acirc;neos de uma fra&ccedil;&atilde;o desse ponto. Pensem nas crueldades infinitas cometidas pelos habitantes de um canto desse pixel contra os habitantes mal distingu&iacute;veis de algum outro canto, em seus frequentes conflitos, em sua &acirc;nsia de rec&iacute;proca destrui&ccedil;&atilde;o, em seus &oacute;dios ardentes.<br><br>
+  Nossas atitudes, nossa pretensa import&acirc;ncia, a ilus&atilde;o de que temos uma posi&ccedil;&atilde;o privilegiada no Universo, tudo &eacute; posto em d&uacute;vida por esse ponto de luz p&aacute;lida. O nosso planeta &eacute; um pontinho solit&aacute;rio na grande escurid&atilde;o c&oacute;smica circundante. Em nossa obscuridade, em meio a toda essa imensid&atilde;o, n&atilde;o h&aacute; nenhum ind&iacute;cio de que, de algum outro mundo, vir&aacute; socorro que nos salve de n&oacute;s mesmos.<br><br>
+  A Terra &eacute;, at&eacute; agora, o &uacute;nico mundo conhecido que abriga a vida. N&atilde;o h&aacute; nenhum outro lugar, ao menos no futuro pr&oacute;ximo, para onde nossa esp&eacute;cie possa migrar. Visitar, sim. Goste-se ou n&atilde;o, no momento a Terra &eacute; o nosso posto.<br><br>
+  Tem-se dito que a astronomia &eacute; uma experi&ecirc;ncia que forma o car&aacute;ter e ensina humildade. Talvez n&atilde;o exista melhor comprova&ccedil;&atilde;o da loucura das vaidades humanas do que esta distante imagem de nosso mundo min&uacute;sculo. Para mim, ela sublinha a responsabilidade de nos relacionarmos mais bondosamente uns com os outros e de preservarmos e amarmos o p&aacute;lido ponto azul, o &uacute;nico lar que conhecemos.</p>
+  <p class="memo-source">Carl Sagan, <em>P&aacute;lido ponto azul.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Bertrand Russell (1872&ndash;1970)</p>
+  <h2 class="memo-section-title">Grande ren&uacute;ncia</h2>
+  <p class="memo-body">Mas h&aacute; na resigna&ccedil;&atilde;o outro bom elemento: [&hellip;] cedo ou tarde, a todos chega a grande ren&uacute;ncia. Para o jovem, nada &eacute; inalcan&ccedil;&aacute;vel. N&atilde;o admite algo ser inating&iacute;vel mesmo quando desejado com toda a for&ccedil;a de uma vontade apaixonada. Contudo, pela morte ou pela doen&ccedil;a, pela pobreza ou pela voz do dever, temos de aprender, cada um de n&oacute;s, que o mundo n&atilde;o foi feito para n&oacute;s, n&atilde;o importa qu&atilde;o belas s&atilde;o as coisas que almejamos, e o Destino pode, n&atilde;o obstante, proibi-las. &Eacute; parte da coragem, quando o desventura chega, suport&aacute;-la sem lamentar a ru&iacute;na de nossas esperan&ccedil;as, afastando nossos pensamentos de remorsos v&atilde;os. Esse grau de submiss&atilde;o ao Poder n&atilde;o &eacute; somente justo e correto: ele &eacute; o verdadeiro caminho da sabedoria.<br><br>
+  Mas a ren&uacute;ncia passiva n&atilde;o &eacute; o todo da sabedoria; pois n&atilde;o &eacute; apenas pela ren&uacute;ncia que podemos construir um templo para a adora&ccedil;&atilde;o de nossos pr&oacute;prios ideais. Press&aacute;gios inquietantes deste templo aparecem no reino da imagina&ccedil;&atilde;o, na m&uacute;sica, na arquitetura, no imperturb&aacute;vel dom&iacute;nio da raz&atilde;o e na m&aacute;gica dourada do entardecer das letras, onde a beleza resplandece e brilha, distante do toque da tristeza, distante do medo da mudan&ccedil;a, distante dos fracassos e desenganos do mundo dos fatos. Na contempla&ccedil;&atilde;o dessas coisas, a vis&atilde;o do para&iacute;so ser&aacute; moldada em nossos cora&ccedil;&otilde;es, fornecendo ao mesmo tempo uma pedra de refer&ecirc;ncia para julgar o mundo ao nosso redor e uma inspira&ccedil;&atilde;o para que possamos, conforme nossas necessidades, transformar tudo aquilo que n&atilde;o seja incapaz de servir como uma pedra de refer&ecirc;ncia no templo sagrado.</p>
+  <p class="memo-source">Bertrand Russell, <em>A Free Man&rsquo;s Worship.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Bertrand Russell (1872&ndash;1970)</p>
+  <h2 class="memo-section-title">Mal corporificado em n&oacute;s</h2>
+  <p class="memo-body">Ao longo das eras do desenvolvimento humano, os seres humanos estiveram sujeitos a dois tipos de infort&uacute;nios: aqueles impostos pela natureza externa e aqueles que eles mesmos equivocadamente infligiram uns aos outros. De in&iacute;cio, os piores males foram de longe os causados pelo ambiente. O homem era uma esp&eacute;cie rara, cuja sobreviv&ecirc;ncia era prec&aacute;ria. Sem a agilidade do macaco, sem qualquer camada de pelo, ele tinha dificuldade em escapar de animais selvagens, e na maioria das partes do mundo n&atilde;o suportava o frio do inverno. Ele tinha apenas duas vantagens biol&oacute;gicas: a postura ereta liberava suas m&atilde;os e a intelig&ecirc;ncia lhe permitia transmitir experi&ecirc;ncia. [&hellip;]<br><br>
+  Mas os males que os homens infligem uns aos outros n&atilde;o diminu&iacute;ram no mesmo grau. Ainda h&aacute; guerras, opress&otilde;es e horrendas crueldades; homens vorazes abocanham ainda a riqueza daqueles que s&atilde;o menos h&aacute;beis ou menos intr&eacute;pidos que eles. O amor ao poder conduz ainda a vastas tiranias ou &agrave; mera obstru&ccedil;&atilde;o quando suas formas mais grosseiras n&atilde;o s&atilde;o poss&iacute;veis. [&hellip;]<br><br>
+  Tudo isso &eacute; desnecess&aacute;rio; n&atilde;o h&aacute; nada na natureza humana que torne esses males inevit&aacute;veis. [&hellip;]<br><br>
+  Nossos problemas atuais se devem, mais do que a qualquer outra coisa, ao fato de que aprendemos a entender e controlar a forma aterrorizante das for&ccedil;as da natureza que s&atilde;o externas a n&oacute;s, mas n&atilde;o aquelas corporificadas em n&oacute;s mesmos.</p>
+  <p class="memo-source">Bertrand Russell, <em>Sobre a natureza humana.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Maurice Merleau-Ponty (1908&ndash;1961)</p>
+  <h2 class="memo-section-title">Eterna &eacute; a pr&oacute;pria vida</h2>
+  <p class="memo-body">O acontecimento final [&hellip;] &eacute; &ldquo;incorporado &agrave; nossa alma&rdquo;, a morte d&aacute; &ldquo;a todos os acontecimentos que a precederam esta marca do absoluto que nunca possuiram se n&atilde;o viessem a interromper-se&rdquo;. O absoluto habita em cada uma das nossas empresas na medida em que cada uma se realiza de uma vez para sempre; e nunca ser&aacute; retomada. Entra em nossa vida pela sua pr&oacute;pria temporalidade. Assim, o eterno torna-se fluido, e reflui do fim ao cora&ccedil;&atilde;o da vida. A morte j&aacute; n&atilde;o &eacute; a verdade da vida, a vida j&aacute; n&atilde;o &eacute; a expectativa do momento em que a nossa ess&ecirc;ncia ser&aacute; alterada [interrompida]. O que sempre h&aacute; de incoactivo, de incompleto e de constrangedor no presente j&aacute; n&atilde;o &eacute; um sinal de menor realidade. Mas, ent&atilde;o, a verdade de um ser j&aacute; n&atilde;o &eacute; aquilo em que se tornou no fim, ou a sua ess&ecirc;ncia, mas o seu devir ativo ou seu pr&oacute;prio existir. E se, como Lavelle dizia em tempos, nos julgamos mais perto dos mortos que am&aacute;mos do que dos vivos, &eacute; porque j&aacute; n&atilde;o nos p&otilde;em em d&uacute;vida [os mortos] e daqui para a futuro podemos sonh&aacute;-los ao nosso gosto. Essa piedade &eacute; quase &iacute;mpia. A &uacute;nica recorda&ccedil;&atilde;o que lhes diz respeito &eacute; a de que se refere ao uso que faziam de si pr&oacute;prios e do pr&oacute;prio mundo, o acento da liberdade na incompletude da vida. O mesmo fr&aacute;gil princ&iacute;pio faz-nos viver e d&aacute; ao que fazemos um sentido inesgot&aacute;vel.</p>
+  <p class="memo-source">Maurice Merleau-Ponty, <em>Elogio da filosofia.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Rubem Alves (1933&ndash;2014)</p>
+  <h2 class="memo-section-title">Inventores de mundos</h2>
+  <p class="memo-body">O fato &eacute; que os homens se recusaram a ser aquilo que, &agrave; semelhan&ccedil;a dos animais, o passado lhes propunha. Tornaram-se inventores de mundos. E plantaram jardins, fizeram choupanas, casas e pal&aacute;cios, constru&iacute;ram tambores, flautas e harpas, fizeram poemas, transformaram os seus corpos cobrindo-os de tintas, metais, marcas e tecidos, inventaram bandeiras, constru&iacute;ram altares, enterraram os seus mortos e os prepararam para viajar e, na sua aus&ecirc;ncia, entoaram lamentos pelos dias e pelas noites.</p>
+  <p class="memo-source">Rubem Alves, <em>O que &eacute; religi&atilde;o.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Blaise Pascal (1623&ndash;1662)</p>
+  <h2 class="memo-section-title">Ignor&acirc;ncia natural</h2>
+  <p class="memo-body">As ci&ecirc;ncias t&ecirc;m duas extremidades que se tocam: a primeira &eacute; a pura ignor&acirc;ncia natural em que se encontram todos os homens ao nascer; a outra extremidade &eacute; aquela &agrave; qual chegam as grandes almas que, tendo percorrido tudo que o homem pode saber, descobrem que nada sabem e se encontram na mesma ignor&acirc;ncia da qual partiram. Mas &eacute; uma ignor&acirc;ncia s&aacute;bia que se tem. Aqueles que ficam entre as duas extremidades, que sa&iacute;ram da ignor&acirc;ncia natural e n&atilde;o puderam chegar &agrave; outra, t&ecirc;m algum vest&iacute;gio [teinture] dessa ci&ecirc;ncia suficiente, e se fazem de entendidos. Esses atrapalham o mundo, e julgam mal as coisas.</p>
+  <p class="memo-source">Blaise Pascal, <em>Raz&atilde;o dos efeitos.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Albert Einstein (1879&ndash;1955)</p>
+  <h2 class="memo-section-title">Mundo impessoal</h2>
+  <p class="memo-body">Era bastante claro para mim que o para&iacute;so religioso da juventude, agora perdido, era uma primeira tentativa para que eu pudesse me libertar do &ldquo;meramente pessoal&rdquo;, de uma exist&ecirc;ncia dominada por vontades, expectativas e desejos primitivos. L&aacute; fora est&aacute; esse mundo imenso, existindo independentemente de n&oacute;s, seres humanos, enorme e eterno enigma, ao menos parcialmente acess&iacute;vel &agrave; nossa raz&atilde;o. Eu entendi que a contempla&ccedil;&atilde;o desse mundo era uma nova forma de liberta&ccedil;&atilde;o [&hellip;] A possibilidade de compreendermos esse mundo impessoal de modo racional tornou-se para mim, consciente ou inconscientemente, o objetivo supremo [&hellip;] Talvez o caminho para esse para&iacute;so n&atilde;o fosse t&atilde;o confort&aacute;vel e seguro como o caminho para o para&iacute;so religioso; mas ele provou ser confi&aacute;vel, e eu nunca me arrependi de minha escolha.</p>
+  <p class="memo-source">Albert Einstein, <em>Notas autobiogr&aacute;ficas.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Rubem Alves (1933&ndash;2014)</p>
+  <h2 class="memo-section-title">Sentido da vida</h2>
+  <p class="memo-body">O sentido da vida: n&atilde;o h&aacute; pergunta que se fa&ccedil;a com maior ang&uacute;stia e parece que todos s&atilde;o por ela assombrados de vez em quando. Valer&aacute; a pena viver? A gravidade da pergunta se revela na gravidade da resposta. Porque n&atilde;o &eacute; raro vermos pessoas mergulhadas nos abismos da loucura, ou optarem voluntariamente pelo abismo do suic&iacute;dio por terem obtido uma resposta negativa. Outras pessoas, como observou Camus, se deixam matar por ideias ou ilus&otilde;es que lhes d&atilde;o raz&otilde;es para viver: boas raz&otilde;es para viver s&atilde;o tamb&eacute;m boas raz&otilde;es para morrer.<br><br>
+  [&hellip;] &Eacute; algo que se experimenta emocionalmente, sem que se saiba explicar ou justificar. N&atilde;o &eacute; algo que se construa, mas algo que nos ocorre de forma inesperada e n&atilde;o preparada, como uma brisa suave que nos atinge, sem que saibamos donde vem nem para onde vai, e que experimentamos como uma intensifica&ccedil;&atilde;o da vontade de viver ao ponto de nos dar coragem para morrer, se necess&aacute;rio for, por aquelas coisas que d&atilde;o &agrave; vida o seu sentido. &Eacute; uma transforma&ccedil;&atilde;o de nossa vis&atilde;o do mundo, na qual as coisas se integram como em uma melodia, o que nos faz sentir reconciliados com o universo ao nosso redor, possu&iacute;dos de um sentimento oce&acirc;nico, na po&eacute;tica express&atilde;o de Romain Rolland, sensa&ccedil;&atilde;o inef&aacute;vel de eternidade e infinitude, de comunh&atilde;o com algo que nos transcende, envolve e embala, como se fosse um &uacute;tero materno de dimens&otilde;es c&oacute;smicas.</p>
+  <p class="memo-source">Rubem Alves, <em>O que &eacute; religi&atilde;o.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Gilberto Freyre (1900&ndash;1987)</p>
+  <h2 class="memo-section-title">Compreens&atilde;o humana</h2>
+  <p class="memo-body">O humano s&oacute; pode ser compreendido pelo humano &ndash; at&eacute; onde pode ser compreendido; e compreens&atilde;o importa em maior ou menor sacrif&iacute;cio da objetividade &agrave; subjetividade. Pois tratando-se de passado humano, h&aacute; que deixar-se espa&ccedil;o para a d&uacute;vida e at&eacute; para o mist&eacute;rio.</p>
+  <p class="memo-source">Gilberto Freyre, <em>Sobrados e mucambos.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Henry James (1843&ndash;1916)</p>
+  <h2 class="memo-section-title">Face oposta</h2>
+  <p class="memo-body">Os temas mais humanos s&atilde;o os que nos revelam, em meio &agrave; confus&atilde;o da vida, a &iacute;ntima rela&ccedil;&atilde;o entre del&iacute;cia e dor, entre o que nos ajuda e o que nos prejudica, sempre a balan&ccedil;ar ante nossos olhos aquela medalha, dura e reluzente, de uma estranha liga met&aacute;lica, que traz em uma das faces a fortuna de uma pessoa e, na face oposta, o infort&uacute;nio de outra.</p>
+  <p class="memo-source">Henry James, <em>Pelos olhos de Maisie.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">W. A. Mozart (1756&ndash;1791)</p>
+  <h2 class="memo-section-title">Vazio e dor</h2>
+  <p class="memo-body">Eu n&atilde;o consigo explicar meus sentimentos para voc&ecirc;; existe um certo vazio que me causa dor, um desejo nunca satisfeito, e que no entanto nunca cessa, sim, aumenta dia a dia&hellip; Eu tamb&eacute;m n&atilde;o encontro alegria no meu trabalho&hellip; se eu sento ao piano e canto algo de minha &oacute;pera, tenho de parar imediatamente, pois me afeta muito.</p>
+  <p class="memo-source">Carta de W. A. Mozart &agrave; esposa, julho de 1791.</p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Terceiro Isa&iacute;as (Trito-Isa&iacute;as), circa V a.C.</p>
+  <h2 class="memo-section-title">Eis que h&aacute; trevas</h2>
+  <p class="memo-body">Desconhecem o caminho da paz, nem h&aacute; justi&ccedil;a nos seus passos; fizeram para si veredas tortuosas; quem anda por elas n&atilde;o conhece a paz. Por isso, est&aacute; longe de n&oacute;s o ju&iacute;zo, e a justi&ccedil;a n&atilde;o nos alcan&ccedil;a; esperamos pela luz, e eis que h&aacute; s&oacute; trevas; pelo resplendor, mas andamos na escurid&atilde;o.<br><br>
+  Apalpamos as paredes como cegos, sim, como os que n&atilde;o t&ecirc;m olhos, andamos apalpando; trope&ccedil;amos ao meio-dia como nas trevas e entre os robustos somos como mortos. Todos n&oacute;s bramamos como ursos e gememos como pombas; esperamos o ju&iacute;zo, e n&atilde;o o h&aacute;; a salva&ccedil;&atilde;o, e ela est&aacute; longe de n&oacute;s.</p>
+  <p class="memo-source">Terceiro Isa&iacute;as, <em>Velho testamento</em>, 59:8&ndash;11. (ARA)</p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Ernest Cline (1972&ndash;)</p>
+  <h2 class="memo-section-title">Dancem, macacos!</h2>
+  <p class="memo-body">Existem bilh&otilde;es de gal&aacute;xias no Universo observ&aacute;vel. Em cada uma delas, existem centenas de bilh&otilde;es de estrelas. Em uma dessas gal&aacute;xias, orbitando uma dessas estrelas, encontra-se um pequeno planeta azul. E este planeta &eacute; governado por um bando de macacos.<br><br>
+  Mas esse macacos n&atilde;o pensam em si mesmos como macacos. Sequer pensam em si mesmos como animais. De fato, eles adoram listar todas as coisas que eles pensam separ&aacute;-los dos animais: polegares opositores, autoconsci&ecirc;ncia, e usam palavras como <em>Homo erectus</em> e <em>Australopithecus</em>. Eles s&atilde;o animais, certo? S&atilde;o macacos! Macacos com tecnologia de fibra &oacute;tica digital de alta velocidade. Mas, ainda sim, macacos&hellip;<br><br>
+  Quero dizer, eles s&atilde;o espertos, voc&ecirc; tem que admitir isso. As pir&acirc;mides, os arranha-c&eacute;us, os jatos, a Grande Muralha da China, tudo isso &eacute; muito impressionante para um bando de macacos. Macacos cujo c&eacute;rebro evoluiu a um tamanho t&atilde;o ingovern&aacute;vel que agora &eacute; bastante imposs&iacute;vel para eles ficarem felizes por muito tempo. Na verdade, eles s&atilde;o os &uacute;nicos animais que pensam que deveriam ser felizes. Todos os outros animais podem simplesmente ser.<br><br>
+  Mas n&atilde;o &eacute; t&atilde;o simples assim para os macacos. Pois esses macacos s&atilde;o amaldi&ccedil;oados com a consci&ecirc;ncia. E, assim, os macacos t&ecirc;m medo, os macacos se preocupam&hellip; Os macacos se preocupam com tudo, mas, acima de tudo, com o que todos os outros macacos pensam, porque os macacos querem desesperadamente se encaixar com os outros macacos. O que &eacute; bem dif&iacute;cil porque a maioria dos macacos se odeia. Isto &eacute; o que realmente os separa dos outros animais: esses macacos odeiam! Odeiam macacos que s&atilde;o diferentes, odeiam macacos de lugares diferentes, macacos de cores diferentes&hellip;<br><br>
+  Sabe, os macacos se sentem sozinhos, todos os 7 bilh&otilde;es deles!<br><br>
+  Alguns dos macacos pagam outros macacos para ouvir seus problemas. Afinal, os macacos querem respostas&hellip;<br><br>
+  Os macacos sabem que v&atilde;o morrer; ent&atilde;o, fazem deuses e os adoram. Ent&atilde;o, os macacos come&ccedil;am a discutir quem fez o melhor deus. E os macacos ficam irritados! E, ent&atilde;o, &eacute; quando eles geralmente decidem que &eacute; uma boa hora de come&ccedil;ar a matar uns aos outros. Ent&atilde;o, os macacos fazem guerras, fazem bombas de hidrog&ecirc;nio. Os macacos t&ecirc;m o planeta inteiro preparado para explodir. Os macacos n&atilde;o sabem o que fazer&hellip;<br><br>
+  Alguns macacos tocam pra uma multid&atilde;o vendida de outros macacos. Eles fazem trof&eacute;us e, ent&atilde;o, os d&atilde;o para si mesmos, como se isto significasse alguma coisa! Alguns dos macacos acham que sabem tudo. Alguns dos macacos l&ecirc;m Nietzsche. Os macacos discutem Nietzsche&hellip; Sem dar qualquer considera&ccedil;&atilde;o ao fato de que Nietzsche&hellip; era apenas outro macaco!<br><br>
+  Os macacos fazem planos, os macacos se apaixonam, os macacos fazem sexo. E, ent&atilde;o, fazem mais macacos!<br><br>
+  Os macacos fazem m&uacute;sica. E, ent&atilde;o, eles dan&ccedil;am&hellip;<br>
+  &ndash; &ldquo;Dancem, macacos, dancem!&rdquo;<br><br>
+  Os macacos fazem muito barulho. Os macacos t&ecirc;m tanto potencial&hellip; se eles ao menos se dedicassem&hellip;<br><br>
+  Os macacos raspam o pelo de seus corpos numa ostensiva nega&ccedil;&atilde;o de sua natureza de macaco. Eles constroem gigantes colmeias de macacos que eles chamam de &ldquo;cidades&rdquo;. Os macacos desenham um monte de linhas imagin&aacute;rias sobre a Terra.<br><br>
+  Os macacos est&atilde;o ficando sem petr&oacute;leo, o combust&iacute;vel da sua prec&aacute;ria civiliza&ccedil;&atilde;o. Os macacos est&atilde;o poluindo e saqueando seu planeta como se n&atilde;o houvesse amanh&atilde;&hellip; Os macacos gostam de fingir que est&aacute; tudo bem. Alguns dos macacos realmente acreditam que o Universo inteiro foi feito para o seu pr&oacute;prio benef&iacute;cio&hellip; Como voc&ecirc; pode ver, eles s&atilde;o uns macacos atrapalhados. Eles s&atilde;o, ao mesmo tempo, as criaturas mais belas e mais feias da natureza!<br><br>
+  Mas os macacos n&atilde;o querem ser macacos.<br>
+  Eles querem ser outra coisa&hellip;<br>
+  Mas n&atilde;o s&atilde;o!</p>
+  <p class="memo-source">Ernest Cline, pe&ccedil;a falada, <em>Seattle National Poetry Slam.</em></p>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Brain Codex</div>
+  <div class="footer-copy">&copy; 2026 Felipe Heemann &mdash; All rights reserved</div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+if(window.location.protocol==='file:'){reveals.forEach(el=>el.classList.add('visible'));}else{const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));}
+</script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epistemic Bedrock &mdash; Memorabilia &middot; Brain Codex</title>
+<meta name="description" content="Epistemic Bedrock — the foundational concepts and philosophical commitments that anchor the Brain Codex catalog. Wittgenstein, Merleau-Ponty, fractal geometry.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Felipe Heemann">
+<link rel="canonical" href="https://braincodex.com.br/epistemic_bedrock.html">
+<meta property="og:title" content="Epistemic Bedrock — Brain Codex Memorabilia">
+<meta property="og:description" content="Foundational concepts anchoring Brain Codex: Wittgenstein, Merleau-Ponty, fractal geometry.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://braincodex.com.br/epistemic_bedrock.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Brain Codex">
+<meta property="og:image" content="https://braincodex.com.br/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Epistemic Bedrock — Brain Codex Memorabilia">
+<meta name="twitter:description" content="Foundational concepts anchoring Brain Codex: Wittgenstein, Merleau-Ponty, fractal geometry.">
+<meta name="twitter:image" content="https://braincodex.com.br/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14;
+  --ink-2: #111821;
+  --ink-3: #18212e;
+  --parchment: #f0ebe3;
+  --parchment-dim: rgba(240,235,227,0.7);
+  --parchment-muted: rgba(240,235,227,0.45);
+  --gold: #c9a96e;
+  --gold-light: #e0c992;
+  --gold-dim: rgba(201,169,110,0.3);
+  --teal: #1a5568;
+  --teal-mid: #257a8f;
+  --teal-light: #3eabc4;
+  --teal-glow: rgba(62,171,196,0.15);
+  --line: rgba(201,169,110,0.15);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:17px; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  line-height: 1.78;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999;
+}
+a { color: var(--teal-light); text-decoration:none; transition: color 0.3s; }
+a:hover { color: var(--gold); }
+.container { max-width:1200px; margin:0 auto; padding:0 2.5rem; }
+.reveal {
+  opacity:0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity:1; transform: translateY(0); }
+
+/* --- Nav --- */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+  transition: background 0.4s;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-brand-text {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+}
+.nav-brand-text span { display:block; font-size:0.5rem; letter-spacing:0.45em; color: var(--teal-light); margin-top:1px; white-space:nowrap; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--parchment); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-toggle { display:none; background:none; border:none; color: var(--parchment); font-size:1.5rem; cursor:pointer; }
+@media (max-width:768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-toggle { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background: rgba(10,14,20,0.98); flex-direction:column; padding:2rem; gap:1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open { display:flex; }
+}
+
+/* --- Dropdown Nav --- */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.nav-submenu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); padding: 0.8rem 0; min-width: 180px;
+  list-style: none; z-index: 200; padding-top: 1rem;
+}
+.nav-submenu::before {
+  content: ''; position: absolute; top: -1rem; left: 0; right: 0; height: 1rem;
+}
+.nav-dropdown:hover > .nav-submenu,
+.nav-dropdown:focus-within > .nav-submenu { display: flex; flex-direction: column; }
+.nav-submenu li { padding: 0; }
+.nav-submenu a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; padding: 0.5rem 1.4rem; display: block; transition: color 0.3s, background 0.3s;
+}
+.nav-submenu a:hover, .nav-submenu a.active { color: var(--parchment); background: rgba(201,169,110,0.08); }
+
+/* --- Back link --- */
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  margin-bottom: 2rem; transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* --- Memorabilia page --- */
+.memo-hero {
+  width: 100%;
+  height: 70vh; min-height: 480px;
+  overflow: hidden; position: relative;
+  margin-top: 60px;
+  background-size: cover;
+  background-position: center center;
+  background-color: var(--ink-3);
+}
+.memo-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(10,14,20,0.38);
+  z-index: 1;
+}
+.memo-hero img { display: none; }
+.memo-hero-credit {
+  position: absolute; bottom: 0.8rem; right: 1.2rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 0.55rem;
+  letter-spacing: 0.12em; color: rgba(240,235,227,0.45); text-transform: uppercase;
+  z-index: 2;
+}
+.memo-hero-quote {
+  position: absolute;
+  bottom: 12%; left: 5%;
+  max-width: 42%;
+  padding: 1.3rem 1.5rem;
+  background: rgba(10,14,20,0.40);
+  backdrop-filter: blur(3px);
+  border-left: 1px solid rgba(201,169,110,0.55);
+  z-index: 2;
+}
+.memo-hero-quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-style: italic; font-weight: 300;
+  line-height: 1.65;
+  color: rgba(240,235,227,0.92);
+  margin-bottom: 0.65rem;
+}
+.memo-hero-quote cite {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; font-style: normal; font-weight: 300;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); display: block;
+}
+@media (max-width: 768px) {
+  .memo-hero { height: 50vh; min-height: 320px; }
+  .memo-hero-quote { max-width: 72%; bottom: 8%; }
+}
+.memo-content {
+  max-width: 720px; margin: 0 auto; padding: 4rem 2.5rem 6rem;
+}
+.memo-content h1 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.15;
+  color: var(--parchment); margin-bottom: 0.4rem; letter-spacing: -0.01em;
+}
+.memo-author {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.7rem;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem;
+}
+.memo-body {
+  font-size: 1.08rem; color: var(--parchment-dim); line-height: 1.82; margin-bottom: 2rem;
+}
+.memo-source {
+  font-size: 0.93rem; color: var(--parchment-muted); margin-bottom: 0.15rem;
+}
+.memo-citation {
+  font-size: 0.93rem; font-style: italic; color: var(--parchment-muted); margin-bottom: 3rem;
+  padding-left: 1.2rem; border-left: 1px solid var(--gold-dim);
+}
+.memo-divider {
+  border: none; border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+/* --- Footer --- */
+footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
+.footer-logo {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--parchment-muted); margin-bottom:0.5rem;
+}
+.footer-copy { font-size:0.75rem; color:rgba(240,235,227,0.3); }
+
+@media (max-width:768px) {
+  .memo-content { padding: 3rem 1.5rem 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Brain Codex - Home">
+    <div class="nav-brand-text">Brain Codex<span>Neuroscience &amp; Philosophy</span></div>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#catalog">Catalog</a></li>
+    <li><a href="incisions.html">Incisions</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Memorabilia <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:3px;"><polyline points="6 9 12 15 18 9"/></svg></a>
+      <ul class="nav-submenu">
+        <li><a href="foundation.html">Foundation</a></li>
+        <li><a href="annotated_canon.html">Annotated Canon</a></li>
+        <li><a href="epistemic_bedrock.html" class="active">Epistemic Bedrock</a></li>
+        <li><a href="pessoa.html">Pessoa</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="memo-hero" style="background-image:url('epistemic-bedrock-cover.jpg');">
+  <div class="memo-hero-quote">
+    <p>Language disguises thought. So much so, that from the outward form of the clothing it is impossible to infer the form of the thought beneath it.</p>
+    <cite>Wittgenstein, Tractatus Logico-Philosophicus</cite>
+  </div>
+  <span class="memo-hero-credit">Placeholder &middot; Pexels.com</span>
+</div>
+
+<div class="memo-content reveal">
+  <a href="index.html" class="back-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Brain Codex</a>
+  <h1>Epistemic Bedrock</h1>
+  <p class="memo-author">Charles Darwin</p>
+  <p class="memo-body">A ciência não é um catálogo de certezas &mdash; é um protocolo de dúvida organizada. O que distingue o conhecimento científico da crença não é a magnitude da convicção, mas a disposição estrutural para o erro. Toda proposição científica é, por definição, provisória.</p>
+  <p class="memo-source">Darwin, C. <em>On the Origin of Species</em>, 1859.</p>
+  <p class="memo-citation">&ldquo;There is grandeur in this view of life.&rdquo;</p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Autor Placeholder</p>
+  <p class="memo-body">O corpo que habita o mundo não escolheu habitar &mdash; foi arremessado. O que chamamos de fundamento é apenas a primeira camada de solo sobre a qual se edificam todas as ilusões subsequentes. O assentamento não é origem; é a primeira ficção necessária.</p>
+  <p class="memo-source">Autor, N. <em>Título da Obra</em>, fragmento 000.</p>
+  <p class="memo-citation">&ldquo;Citação placeholder. / Segunda linha da citação. / Terceira linha.&rdquo;</p>
+  <hr class="memo-divider">
+
+  <p class="memo-author">Autor Placeholder</p>
+  <p class="memo-body">O corpo que habita o mundo não escolheu habitar &mdash; foi arremessado. O que chamamos de fundamento é apenas a primeira camada de solo sobre a qual se edificam todas as ilusões subsequentes. O assentamento não é origem; é a primeira ficção necessária.</p>
+  <p class="memo-source">Autor, N. <em>Título da Obra</em>, fragmento 000.</p>
+  <p class="memo-citation">&ldquo;Citação placeholder. / Segunda linha da citação. / Terceira linha.&rdquo;</p>
+  <hr class="memo-divider">
+
+  <p class="memo-author">Autor Placeholder</p>
+  <p class="memo-body">O corpo que habita o mundo não escolheu habitar &mdash; foi arremessado. O que chamamos de fundamento é apenas a primeira camada de solo sobre a qual se edificam todas as ilusões subsequentes. O assentamento não é origem; é a primeira ficção necessária.</p>
+  <p class="memo-source">Autor, N. <em>Título da Obra</em>, fragmento 000.</p>
+  <p class="memo-citation">&ldquo;Citação placeholder. / Segunda linha da citação. / Terceira linha.&rdquo;</p>
+  <hr class="memo-divider">
+
+  <p class="memo-author">Autor Placeholder</p>
+  <p class="memo-body">O corpo que habita o mundo não escolheu habitar &mdash; foi arremessado. O que chamamos de fundamento é apenas a primeira camada de solo sobre a qual se edificam todas as ilusões subsequentes. O assentamento não é origem; é a primeira ficção necessária.</p>
+  <p class="memo-source">Autor, N. <em>Título da Obra</em>, fragmento 000.</p>
+  <p class="memo-citation">&ldquo;Citação placeholder. / Segunda linha da citação. / Terceira linha.&rdquo;</p>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Brain Codex</div>
+  <div class="footer-copy">&copy; 2026 Felipe Heemann &mdash; All rights reserved</div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+if(window.location.protocol==='file:'){reveals.forEach(el=>el.classList.add('visible'));}else{const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));}
+</script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pessoa &mdash; Memorabilia &middot; Brain Codex</title>
+<meta name="description" content="Pessoa — a tribute to Fernando Pessoa within the Brain Codex memorabilia. Heteronyms, phenomenology, and the limits of language.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Felipe Heemann">
+<link rel="canonical" href="https://braincodex.com.br/pessoa.html">
+<meta property="og:title" content="Pessoa — Brain Codex Memorabilia">
+<meta property="og:description" content="A tribute to Fernando Pessoa: heteronyms, phenomenology, and the limits of language.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://braincodex.com.br/pessoa.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Brain Codex">
+<meta property="og:image" content="https://braincodex.com.br/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pessoa — Brain Codex Memorabilia">
+<meta name="twitter:description" content="A tribute to Fernando Pessoa: heteronyms, phenomenology, and the limits of language.">
+<meta name="twitter:image" content="https://braincodex.com.br/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14;
+  --ink-2: #111821;
+  --ink-3: #18212e;
+  --parchment: #f0ebe3;
+  --parchment-dim: rgba(240,235,227,0.7);
+  --parchment-muted: rgba(240,235,227,0.45);
+  --gold: #c9a96e;
+  --gold-light: #e0c992;
+  --gold-dim: rgba(201,169,110,0.3);
+  --teal: #1a5568;
+  --teal-mid: #257a8f;
+  --teal-light: #3eabc4;
+  --teal-glow: rgba(62,171,196,0.15);
+  --line: rgba(201,169,110,0.15);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:17px; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  line-height: 1.78;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999;
+}
+a { color: var(--teal-light); text-decoration:none; transition: color 0.3s; }
+a:hover { color: var(--gold); }
+.container { max-width:1200px; margin:0 auto; padding:0 2.5rem; }
+.reveal {
+  opacity:0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity:1; transform: translateY(0); }
+
+/* --- Nav --- */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+  transition: background 0.4s;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-brand-text {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+}
+.nav-brand-text span { display:block; font-size:0.5rem; letter-spacing:0.45em; color: var(--teal-light); margin-top:1px; white-space:nowrap; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--parchment); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-toggle { display:none; background:none; border:none; color: var(--parchment); font-size:1.5rem; cursor:pointer; }
+@media (max-width:768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-toggle { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background: rgba(10,14,20,0.98); flex-direction:column; padding:2rem; gap:1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open { display:flex; }
+}
+
+/* --- Dropdown Nav --- */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.nav-submenu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); padding: 0.8rem 0; min-width: 180px;
+  list-style: none; z-index: 200; padding-top: 1rem;
+}
+.nav-submenu::before {
+  content: ''; position: absolute; top: -1rem; left: 0; right: 0; height: 1rem;
+}
+.nav-dropdown:hover > .nav-submenu,
+.nav-dropdown:focus-within > .nav-submenu { display: flex; flex-direction: column; }
+.nav-submenu li { padding: 0; }
+.nav-submenu a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; padding: 0.5rem 1.4rem; display: block; transition: color 0.3s, background 0.3s;
+}
+.nav-submenu a:hover, .nav-submenu a.active { color: var(--parchment); background: rgba(201,169,110,0.08); }
+
+/* --- Back link --- */
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  margin-bottom: 2rem; transition: color 0.3s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* --- Memorabilia page --- */
+.memo-hero {
+  width: 100%;
+  height: 70vh; min-height: 480px;
+  overflow: hidden; position: relative;
+  margin-top: 60px;
+  background-size: cover;
+  background-position: center center;
+  background-color: var(--ink-3);
+}
+.memo-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(10,14,20,0.38);
+  z-index: 1;
+}
+.memo-hero img { display: none; }
+.memo-hero-credit {
+  position: absolute; bottom: 0.8rem; right: 1.2rem;
+  font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 0.55rem;
+  letter-spacing: 0.12em; color: rgba(240,235,227,0.45); text-transform: uppercase;
+  z-index: 2;
+}
+.memo-hero-quote {
+  position: absolute;
+  bottom: 12%; left: 5%;
+  max-width: 42%;
+  padding: 1.3rem 1.5rem;
+  background: rgba(10,14,20,0.40);
+  backdrop-filter: blur(3px);
+  border-left: 1px solid rgba(201,169,110,0.55);
+  z-index: 2;
+}
+.memo-hero-quote p {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-style: italic; font-weight: 300;
+  line-height: 1.65;
+  color: rgba(240,235,227,0.92);
+  margin-bottom: 0.65rem;
+}
+.memo-hero-quote cite {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.6rem; font-style: normal; font-weight: 300;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); display: block;
+}
+@media (max-width: 768px) {
+  .memo-hero { height: 50vh; min-height: 320px; }
+  .memo-hero-quote { max-width: 72%; bottom: 8%; }
+}
+.memo-content {
+  max-width: 720px; margin: 0 auto; padding: 4rem 2.5rem 6rem;
+}
+.memo-content h1 {
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.15;
+  color: var(--parchment); margin-bottom: 2rem; letter-spacing: -0.01em;
+}
+.memo-section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.35rem; font-weight: 300; font-style: italic;
+  color: var(--parchment); line-height: 1.2;
+  margin-bottom: 1.2rem; letter-spacing: 0.01em;
+}
+.memo-author {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.7rem;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+.memo-body {
+  font-size: 1.08rem; color: var(--parchment-dim); line-height: 1.82; margin-bottom: 2rem;
+}
+.memo-source {
+  font-size: 0.93rem; color: var(--parchment-muted); margin-bottom: 0.15rem;
+}
+.memo-citation {
+  font-size: 0.93rem; font-style: italic; color: var(--parchment-muted); margin-bottom: 3rem;
+  padding-left: 1.2rem; border-left: 1px solid var(--gold-dim);
+}
+.memo-divider {
+  border: none; border-top: 1px solid var(--line);
+  margin: 3rem 0;
+}
+
+/* --- Footer --- */
+footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
+.footer-logo {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--parchment-muted); margin-bottom:0.5rem;
+}
+.footer-copy { font-size:0.75rem; color:rgba(240,235,227,0.3); }
+
+@media (max-width:768px) {
+  .memo-content { padding: 3rem 1.5rem 4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Brain Codex - Home">
+    <div class="nav-brand-text">Brain Codex<span>Neuroscience &amp; Philosophy</span></div>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#catalog">Catalog</a></li>
+    <li><a href="incisions.html">Incisions</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Memorabilia <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:3px;"><polyline points="6 9 12 15 18 9"/></svg></a>
+      <ul class="nav-submenu">
+        <li><a href="foundation.html">Foundation</a></li>
+        <li><a href="annotated_canon.html">Annotated Canon</a></li>
+        <li><a href="epistemic_bedrock.html">Epistemic Bedrock</a></li>
+        <li><a href="pessoa.html">Pessoa</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="memo-hero" style="background-image:url('pessoa-cover.jpg');">
+  <div class="memo-hero-quote">
+    <p>O homem não sabe mais que os outros animais; sabe menos. Eles sabem o que precisam saber. Nós não.</p>
+    <cite>Fernando Pessoa</cite>
+  </div>
+  <span class="memo-hero-credit">Placeholder &middot; Pexels.com</span>
+</div>
+
+<div class="memo-content reveal">
+  <a href="index.html" class="back-link"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Brain Codex</a>
+  <h1>Pessoa</h1>
+
+  <p class="memo-author">Bernardo Soares</p>
+  <h2 class="memo-section-title">Immediate reality</h2>
+  <p class="memo-body">O verdadeiro sábio é aquele que assim se dispõe que os acontecimentos exteriores o alterem minimamente.<br><br>
+  Para isso precisa couraçar-se cercando-se de realidades mais próximas de si do que os factos, e através das quais os factos, alterados para de acordo com elas, lhe chegam.</p>
+  <p class="memo-source">Bernardo Soares, <em>The Book of Disquiet.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Bernardo Soares</p>
+  <h2 class="memo-section-title">Ignominy</h2>
+  <p class="memo-body">O homem não deve poder ver a sua própria cara. Isso é o que há de mais terrível. A Natureza deu-lhe o dom de não a poder ver, assim como de não poder fitar os seus próprios olhos.<br><br>
+  Só na água dos rios e dos lagos ele podia fitar seu rosto. E a postura, mesmo, que tinha de tomar, era simbólica. Tinha de se curvar, de se baixar para cometer a ignomínia de se ver.<br><br>
+  O criador do espelho envenenou a alma humana.</p>
+  <p class="memo-source">Bernardo Soares, <em>The Book of Disquiet.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Bernardo Soares</p>
+  <h2 class="memo-section-title">And so we die</h2>
+  <p class="memo-body">Sei que despertei e que ainda durmo. O meu corpo antigo, moído de eu viver, diz-me que é muito cedo ainda&hellip; Sinto-me febril de longe. Peso-me não sei por quê&hellip;<br><br>
+  Num torpor lúcido, pesadamente incorpóreo, estagno, entre um sono e a vigília, num sonho que é uma sombra de sonhar. Minha atenção boia entre dois mundos e vê cegamente a profundeza de um mar e a profundeza de um céu; e estas profundezas interpenetram-me, misturam-se, e eu não sei onde estou nem o que sonho. [&hellip;]<br><br>
+  Lá fora a antemanhã tão longínqua! A floresta tão aqui ante outros olhos meus!<br><br>
+  E eu, que longe dessa paisagem quase a esqueço, é ao tê-la que tenho saudades dela, é ao percorrê-la que a choro e a ela aspiro.<br><br>
+  As árvores! As flores! O esconder-se copado dos caminhos!&hellip;<br><br>
+  Passeávamos às vezes, braço dado, sob os cedros e as olaias e nenhum de nós pensava em viver. A nossa carne era-nos um perfume vago e a nossa vida um eco de som de fonte. Dávamo-nos as mãos e os nossos olhares perguntavam-se o que seria o ser sensual e o querer realizar em carne a ilusão do amor&hellip; [&hellip;]<br><br>
+  Loucura de sonho naquele silêncio alheio!&hellip;<br><br>
+  A nossa vida era toda a vida&hellip; O nosso amor era o perfume do amor&hellip; Vivíamos horas impossíveis, cheias de sermos nós&hellip; E isto porque sabíamos, com toda a carne da nossa carne, que não éramos uma realidade&hellip;<br><br>
+  Éramos impessoais, ocos de nós, outra coisa qualquer&hellip; Éramos aquela paisagem esfumada em consciência de si própria&hellip; E assim como ela era duas &mdash; de realidade que era, a ilusão &mdash; assim éramos nós obscuramente dois, nenhum de nós sabendo bem se o outro não ele próprio, se o incerto outro viveria&hellip;<br><br>
+  E assim nós morremos a nossa vida, tão atentos separadamente a morrê-la que não reparamos que éramos um só, que cada um de nós era uma ilusão do outro, e cada um, dentro de si, o mero eco do seu próprio ser&hellip;[&hellip;]<br><br>
+  Desenganemo-nos da esperança, porque trai, do amor, porque cansa, da vida, porque farta e não sacia, e até da morte, porque traz mais do que se quer e menos do que se espera.<br><br>
+  Desenganemo-nos [&hellip;] do nosso próprio tédio, porque se envelhece de si próprio e não ousa ser toda a angústia que é.</p>
+  <p class="memo-source">Bernardo Soares, <em>The Book of Disquiet.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Álvaro de Campos</p>
+  <h2 class="memo-section-title">I do not exist</h2>
+  <p class="memo-body">Começo a conhecer-me. Não existo.<br>
+  Sou o intervalo entre o que desejo ser e os outros me fizeram,<br>
+  Ou metade desse intervalo, porque também há vida&hellip;<br>
+  Sou isso, enfim&hellip;<br><br>
+  Apague a luz, feche a porta e deixe de ter barulho de chinelas no corredor.<br>
+  Fique eu no quarto só com o grande sossego de mim mesmo.<br>
+  É um universo barato.</p>
+  <p class="memo-source">Álvaro de Campos, <em>Poems of Álvaro de Campos.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Alberto Caeiro</p>
+  <h2 class="memo-section-title">Before me</h2>
+  <p class="memo-body">Passa uma borboleta por diante de mim<br>
+  E pela primeira vez no Universo eu reparo<br>
+  Que as borboletas não têm cor nem movimento,<br>
+  Assim como as flores não têm perfume nem cor.<br><br>
+  A cor é que tem cor nas asas da borboleta,<br>
+  No movimento da borboleta o movimento é que se move.<br>
+  O perfume é que tem perfume no perfume da flor.<br><br>
+  A borboleta é apenas borboleta<br>
+  E a flor é apenas flor.</p>
+  <p class="memo-source">Alberto Caeiro, <em>The Keeper of Flocks.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Ricardo Reis</p>
+  <h2 class="memo-section-title">Nothing in excess</h2>
+  <p class="memo-body">Para ser grande, sê inteiro: nada<br>
+  Teu exagera ou exclui.<br>
+  Sê todo em cada coisa. Põe quanto és<br>
+  No mínimo que fazes.<br><br>
+  Assim em cada lago a lua toda<br>
+  Brilha, porque alta vive.</p>
+  <p class="memo-source">Ricardo Reis, <em>Odes of Ricardo Reis.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Bernardo Soares</p>
+  <h2 class="memo-section-title">A sliver of sun</h2>
+  <p class="memo-body">Pedi tão pouco à vida e esse mesmo pouco a vida me negou. Uma réstia de parte do sol, um campo, um bocado de sossego com um bocado de pão, não me pesar muito o conhecer que existo, e não exigir nada dos outros nem exigirem eles nada de mim. Isto mesmo me foi negado, como quem nega a esmola não por falta de boa alma mas para não ter que desabotoar o casaco.<br><br>
+  Escrevo, triste, no meu quarto quieto, sozinho como sempre tenho sido, sozinho como sempre serei. E penso se na minha voz, aparentemente tão pouca coisa, não incarna a substância de milhares de vozes, a fome de milhares de vidas, a paciência de milhões de almas submissas como a minha no destino quotidiano, ao sonho inútil, à esperança sem vestígios. Nestes momentos meu coração pulsa mais alto por minha consciência dele. Vivo mais porque vivo maior. [&hellip;]</p>
+  <p class="memo-source">Bernardo Soares, <em>The Book of Disquiet.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Fernando Pessoa</p>
+  <h2 class="memo-section-title">Nothing more</h2>
+  <p class="memo-body">Não tenho ninguém em quem confiar. A minha família não entende nada. Não posso incomodar os amigos com estas coisas. Não tenho realmente verdadeiros amigos íntimos, e mesmo aqueles a quem posso dar esse nome no sentido em que geralmente se emprega essa palavra, não são íntimos no sentido em que eu entendo a intimidade. Sou tímido, e tenho repugnância em dar a conhecer as minhas angústias. Um amigo íntimo é um dos meus ideais, um dos meus sonhos quotidianos, embora esteja certo de que nunca chegarei a ter um verdadeiro amigo íntimo. Nenhum temperamento se adapta ao meu. Não há um único carácter neste mundo que porventura dê mostras de se aproximar daquilo que eu suponho que deve ser um amigo íntimo.<br><br>
+  Acabemos com isto. Amantes ou namoradas é coisa que não tenho e é outro dos meus ideais, embora só encontre, por mais que procure, no íntimo desse ideal, vacuidade, e nada mais. Impossível, como eu o sonho! Ai de mim! Pobre Alastor! Oh Shelley, como eu te compreendo! Poderei eu confiar em minha mãe? Como eu desejaria tê-la junto de mim! Também não posso confiar nela. Mas a sua presença teria aliviado as minhas dores. Sinto-me abandonado como um náufrago no meio do mar. E que sou eu senão um náufrago, afinal? Por isso só em mim próprio posso confiar. Confiar em mim próprio? Que confiança poderei eu ter nestas linhas? Nenhuma. Quando volto a lê-las, o meu espírito sofre percebendo quão pretensiosas, quão a armar a um diário literário elas se apresentam! Nalgumas até mesmo cheguei a fazer estilo. A verdade, porém, é que sofro. Um homem tanto pode sofrer com um fato de seda como metido num saco ou dentro de uma manta de trapos. Nada mais.</p>
+  <p class="memo-source">Fernando Pessoa, <em>Pessoa por conhecer.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Fernando Pessoa</p>
+  <h2 class="memo-section-title">Beyond another ocean</h2>
+  <p class="memo-body">Num sentimento de febre de ser para além doutro oceano<br>
+  Houve posições dum viver mais claro e mais límpido<br>
+  E aparências duma cidade de seres<br>
+  Não irreais mas lívidos de impossibilidade, consagrados em pureza e em nudez<br><br>
+  Fui pórtico desta visão irrita e os sentimentos eram só o desejo de os ter<br>
+  A noção das coisas fora de si, tinha-as cada um adentro<br>
+  Todos viviam na vida dos restantes<br>
+  E a maneira de sentir estava no modo de se viver<br><br>
+  Mas a forma daqueles rostos tinha a placidez do orvalho<br>
+  A nudez era um silêncio de formas sem modo de ser<br>
+  E houve pasmos de toda a realidade ser só isto<br>
+  Mas a vida era a vida e só era a vida [&hellip;]<br><br>
+  Sentir a poesia é a maneira figurada de se viver<br>
+  Eu não sinto a poesia não porque não saiba o que ela é<br>
+  Mas porque não posso viver figuradamente<br>
+  E se o conseguisse tinha de seguir outro modo de me acondicionar<br><br>
+  A condição da poesia é ignorar como se pode senti-la<br>
+  Há coisas belas que são belas em si<br>
+  Mas a beleza íntima dos sentimentos espelha-se nas coisas<br>
+  E se elas são belas nós não as sentimos<br><br>
+  Na sequência dos passos não posso ver mais que a sequência dos passos<br>
+  E eles seguem-se como se eu os visse seguirem-se realmente<br>
+  Do facto deles serem tão iguais a si-mesmo<br>
+  E de não haver uma sequência de passos que o não seja<br><br>
+  É que eu vejo a necessidade de nos não iludirmos sobre o sentido claro das coisas<br>
+  Assim havíamos de julgar que um corpo inanimado sente e vê diferentemente de nós<br>
+  E esta noção por ser admissível de mais seria incómoda e fútil [&hellip;]</p>
+  <p class="memo-source">Coelho Pacheco, <em>Orpheu.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Fernando Pessoa</p>
+  <h2 class="memo-section-title">The far shore</h2>
+  <p class="memo-body">Estou hoje no fundo de uma depressão sem fundo. O absurdo da frase falará por mim. Estou num daqueles dias em que nunca tive futuro. Há só um presente imóvel com um muro de angústia em torno. A margem de lá do rio nunca, enquanto é a de lá, é a de cá; e é esta a razão íntima de todo o meu sofrimento. Há barcos para muitos portos, mas nenhum para a vida não doer, nem desembarque onde se esqueça.[&hellip;]<br><br>
+  Doi-me a vida aos poucos, a goles, por interstícios.</p>
+  <p class="memo-source">Fernando Pessoa, <em>Letter to Mário de Sá-Carneiro.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Fernando Pessoa</p>
+  <h2 class="memo-section-title">Small irritations</h2>
+  <p class="memo-body">Em primeiro lugar, tenho o espírito feito em trapos por uma série de grandes apoquentações que me atacaram, em parte atacam, simultaneamente. Você sabe bem qual o efeito desorientador de uma acumulação de pequenas arrelias. Imagine qual o efeito de uma acumulação de grandes apoquentações. Uma grande apoquentação, só uma, não chega, muitas vezes, a valer, para o efeito de nos dispersar e banir de nós [&hellip;].<br><br>
+  Mas olhe que uma junção de arrelias grandes opera muito mais desastradamente sobre nós.[&hellip;]<br><br>
+  Já a angústia, hoje consubstanciada comigo, me apoquenta e me desvaira.</p>
+  <p class="memo-source">Fernando Pessoa, <em>Intimate Writings, Letter to Mário de Sá-Carneiro.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Álvaro de Campos</p>
+  <h2 class="memo-section-title">Poem in a straight line</h2>
+  <p class="memo-body">[&hellip;] E eu, tantas vezes reles, tantas vezes porco, tantas vezes vil,<br>
+  Eu tantas vezes irrespondivelmente parasita,<br>
+  Indesculpavelmente sujo,<br>
+  Eu, que tantas vezes não tenho tido paciência para tomar banho,<br>
+  Eu, que tantas vezes tenho sido ridículo, absurdo,<br>
+  Que tenho enrolado os pés publicamente nos tapetes das etiquetas,<br>
+  Que tenho sido grotesco, mesquinho, submisso e arrogante,<br>
+  Que tenho sofrido enxovalhos e calado,<br>
+  Que quando não tenho calado, tenho sido mais ridículo ainda;<br>
+  Eu, que tenho sido cómico às criadas de hotel,<br>
+  Eu, que tenho sentido o piscar de olhos dos moços de fretes,<br>
+  Eu, que tenho feito vergonhas financeiras, pedido emprestado sem pagar,<br>
+  Eu, que, quando a hora do soco surgiu, me tenho agachado,<br>
+  Para fora da possibilidade do soco;<br>
+  Eu, que tenho sofrido a angústia das pequenas coisas ridículas,<br>
+  Eu verifico que não tenho par nisto tudo neste mundo. [&hellip;]</p>
+  <p class="memo-source">Álvaro de Campos, <em>Poems of Álvaro de Campos.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Mário de Sá-Carneiro</p>
+  <h2 class="memo-section-title">I was a labyrinth</h2>
+  <p class="memo-body">Eu era labirinto<br>
+  Perdi-me dentro de mim<br>
+  Porque eu era labirinto<br>
+  E hoje, quando me sinto,<br>
+  É com saudades de mim. [&hellip;]<br><br>
+  Não sinto o espaço que encerro<br>
+  Nem as linhas que projeto:<br>
+  Se me olho a um espelho, erro &mdash;<br>
+  Não me acho no que projeto. [&hellip;]<br><br>
+  As minhas grandes saudades<br>
+  São do que nunca enlacei.<br>
+  Ai, como eu tenho saudades<br>
+  Dos sonhos que não sonhei!&hellip; [&hellip;]<br><br>
+  Perdi a morte e a vida,<br>
+  E, louco, não enlouqueço&hellip;<br>
+  A hora foge vivida<br>
+  Eu sigo-a, mas permaneço&hellip;</p>
+  <p class="memo-source">Mário de Sá-Carneiro, <em>Correspondence with Fernando Pessoa.</em></p>
+
+  <hr class="memo-divider">
+
+  <p class="memo-author">Mário de Sá-Carneiro</p>
+  <h2 class="memo-section-title">I go to the end</h2>
+  <p class="memo-body">Eu decido correr a uma provável desilusão. E uma manhã, recebo na alma mais uma vergastada &mdash; prova real dessa desilusão. Era o momento de recuar. Mas eu não recuo. Sei já, positivamente sei, que só há ruínas no termo do beco, e continuo a correr para ele até que os braços se me partem de encontro ao muro espesso do beco sem saída. [&hellip;]<br><br>
+  Há na minha vida um bem lamentável episódio que só se explica assim. Aqueles que o conhecem, no momento que vivi, chamaram-lhe loucura e disparate inexplicável. Mas não era, não era. É que eu se começo a beber um copo de fel, hei-de forçosamente bebê-lo até o fim. Porque &mdash; coisa estranha! &mdash; sofro menos esgotando-o até a última gota, do que lançando-o apenas encetado. Eu sou daqueles que vão até o fim. [&hellip;]<br><br>
+  Os actos da minha existência íntima, um deles quase trágico, são resultantes directos desse triste fardo.</p>
+  <p class="memo-source">Mário de Sá-Carneiro, <em>Correspondence with Fernando Pessoa.</em></p>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Brain Codex</div>
+  <div class="footer-copy">&copy; 2026 Felipe Heemann &mdash; All rights reserved</div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+if(window.location.protocol==='file:'){reveals.forEach(el=>el.classList.add('visible'));}else{const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.1});reveals.forEach(el=>observer.observe(el));}
+</script>
+</body>
+</html>

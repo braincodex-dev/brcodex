@@ -1,0 +1,8 @@
+# Redirecionamento de domínios secundários para o primário
+https://ciencias.bio.br/* https://braincodex.com.br/:splat  301!
+https://neurobiologia.com.br/* https://braincodex.com.br/:splat  301!
+https://psicobiologia.com.br/* https://braincodex.com.br/:splat  301!
+https://www.braincodex.com.br/* https://braincodex.com.br/:splat  301!
+
+# Redirecionamento do subdomínio default do Netlify
+https://braincodexbr.netlify.app/* https://braincodex.com.br/:splat  301!

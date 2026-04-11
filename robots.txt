@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://braincodex.com.br/sitemap.xml
