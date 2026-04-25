@@ -154,6 +154,8 @@ nav {
 }
 nav.scrolled { background: rgba(10,14,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-brand-icon { height: 28px; width: auto; opacity: 0.85; transition: opacity 0.3s; filter: none; }
+.nav-brand:hover .nav-brand-icon { opacity: 1; }
 .nav-brand-text {
   font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem;
   letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
@@ -461,6 +463,7 @@ footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
 
 <nav id="mainNav" role="navigation" aria-label="Main navigation">
   <a href="#hero" class="nav-brand" aria-label="Brain Codex - Home">
+    <img src="data:image/png;base64,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" alt="Brain Codex icon" class="nav-brand-icon" aria-hidden="true">
     <div class="nav-brand-text">Brain Codex<span>Neurobioscience &amp; Philosophy</span></div>
   </a>
   <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
@@ -477,6 +480,7 @@ footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
         <li><a href="pessoa.html">Pessoa</a></li>
       </ul>
     </li>
+    <li><a href="provenance.html">Provenance</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>

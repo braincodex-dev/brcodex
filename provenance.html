@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provenance &mdash; Brain Codex</title>
+<meta name="description" content="Provenance: the epistemic chain, verification filters, and methodological commitments of Brain Codex. Radical transparency in the curation of neuroscience and philosophy of science.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="author" content="Felipe Heemann">
+<link rel="canonical" href="https://braincodex.com.br/provenance.html">
+<meta property="og:title" content="Provenance — Brain Codex">
+<meta property="og:description" content="The epistemic chain, verification filters, and methodological commitments of Brain Codex.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://braincodex.com.br/provenance.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Brain Codex">
+<meta property="og:image" content="https://braincodex.com.br/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Provenance — Brain Codex">
+<meta name="twitter:description" content="The epistemic chain, verification filters, and methodological commitments of Brain Codex.">
+<meta name="twitter:image" content="https://braincodex.com.br/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0e14;
+  --ink-2: #111821;
+  --ink-3: #18212e;
+  --parchment: #f0ebe3;
+  --parchment-dim: rgba(240,235,227,0.7);
+  --parchment-muted: rgba(240,235,227,0.45);
+  --gold: #c9a96e;
+  --gold-light: #e0c992;
+  --gold-dim: rgba(201,169,110,0.3);
+  --teal: #1a5568;
+  --teal-mid: #257a8f;
+  --teal-light: #3eabc4;
+  --teal-glow: rgba(62,171,196,0.15);
+  --line: rgba(201,169,110,0.15);
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; font-size:17px; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  line-height: 1.78;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:9999;
+}
+a { color: var(--teal-light); text-decoration:none; transition: color 0.3s; }
+a:hover { color: var(--gold); }
+.container { max-width:1200px; margin:0 auto; padding:0 2.5rem; }
+.reveal {
+  opacity:0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.reveal.visible { opacity:1; transform: translateY(0); }
+
+/* --- Nav --- */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
+  transition: background 0.4s;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.nav-brand-icon { height: 28px; width: auto; opacity: 0.85; transition: opacity 0.3s; }
+.nav-brand:hover .nav-brand-icon { opacity: 1; }
+.nav-brand-text {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.72rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+}
+.nav-brand-text span { display:block; font-size:0.5rem; letter-spacing:0.45em; color: var(--teal-light); margin-top:1px; white-space:nowrap; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.68rem;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--parchment); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-toggle { display:none; background:none; border:none; color: var(--parchment); font-size:1.5rem; cursor:pointer; }
+@media (max-width:768px) {
+  nav { padding:1rem 1.5rem; }
+  .nav-toggle { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:100%; left:0; right:0;
+    background: rgba(10,14,20,0.98); flex-direction:column; padding:2rem; gap:1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-links.open { display:flex; }
+}
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.nav-submenu {
+  display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(10,14,20,0.97); backdrop-filter: blur(12px);
+  border: 1px solid var(--line); padding: 0.8rem 0; min-width: 180px;
+  list-style: none; z-index: 200; padding-top: 1rem;
+}
+.nav-submenu::before {
+  content: ''; position: absolute; top: -1rem; left: 0; right: 0; height: 1rem;
+}
+.nav-dropdown:hover > .nav-submenu,
+.nav-dropdown:focus-within > .nav-submenu { display: flex; flex-direction: column; }
+.nav-submenu a {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--parchment-muted);
+  text-decoration: none; padding: 0.5rem 1.4rem; display: block; transition: color 0.3s, background 0.3s;
+}
+.nav-submenu a:hover { color: var(--parchment); background: rgba(201,169,110,0.08); }
+
+/* --- Page hero --- */
+.prov-hero {
+  padding: 10rem 0 6rem;
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.prov-hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 55% 60% at 70% 40%, var(--teal-glow), transparent);
+  pointer-events: none;
+}
+.prov-overline {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 0.65rem;
+  letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.4rem;
+}
+.prov-title {
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 300; line-height: 1.05; letter-spacing: -0.02em;
+  color: var(--parchment); margin-bottom: 1.8rem;
+}
+.prov-title em { font-style: italic; color: var(--teal-light); }
+.prov-lede {
+  max-width: 580px;
+  font-size: 1.15rem; font-weight: 300; color: var(--parchment-dim); line-height: 1.75;
+}
+
+/* --- Epigraph --- */
+.prov-epigraph {
+  margin: 5rem 0 4rem;
+  padding: 2.2rem 2.8rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,169,110,0.04);
+  max-width: 660px;
+}
+.prov-epigraph p {
+  font-size: 1.12rem; font-style: italic; font-weight: 300;
+  color: var(--parchment-dim); line-height: 1.8; margin-bottom: 1rem;
+}
+.prov-epigraph cite {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.6rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-style: normal;
+}
+
+/* --- Main content layout --- */
+.prov-body {
+  padding: 6rem 0 8rem;
+}
+.prov-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 5rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .prov-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+/* --- Section typography --- */
+.section-label {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.68rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.prov-section { margin-bottom: 4rem; }
+.prov-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300;
+  line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--parchment); margin-bottom: 1.4rem;
+}
+.prov-section h2 em { font-style: italic; color: var(--teal-light); }
+.prov-section p {
+  font-size: 1.05rem; color: var(--parchment-dim); line-height: 1.82; margin-bottom: 1.1rem;
+}
+.prov-section p strong {
+  color: var(--parchment); font-weight: 500;
+}
+hr.prov-rule {
+  border: none; border-top: 1px solid var(--line); margin: 3rem 0;
+}
+
+/* --- Filter cards --- */
+.filter-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.8rem; }
+.filter-card {
+  padding: 1.5rem 1.8rem;
+  border: 1px solid var(--line);
+  position: relative; overflow: hidden;
+  transition: border-color 0.4s;
+}
+.filter-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 100%;
+  background: linear-gradient(180deg, var(--gold), var(--teal-light));
+  transform: scaleY(0); transform-origin: top;
+  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.filter-card:hover { border-color: var(--gold-dim); }
+.filter-card:hover::before { transform: scaleY(1); }
+.filter-num {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 200; font-size: 0.6rem;
+  letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.filter-title {
+  font-size: 1.05rem; font-weight: 500; color: var(--parchment); margin-bottom: 0.4rem;
+}
+.filter-desc {
+  font-size: 0.95rem; color: var(--parchment-muted); line-height: 1.65;
+}
+
+/* --- Sidebar (right column) --- */
+.prov-sidebar {}
+.sidebar-card {
+  padding: 1.8rem 2rem;
+  border: 1px solid var(--line);
+  margin-bottom: 1.5rem;
+  background: var(--ink-2);
+}
+.sidebar-card h3 {
+  font-family: 'Josefin Sans', sans-serif; font-weight: 300; font-size: 0.65rem;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1rem;
+}
+.sidebar-card p, .sidebar-card li {
+  font-size: 0.93rem; color: var(--parchment-muted); line-height: 1.72;
+}
+.sidebar-card ul { padding-left: 1rem; }
+.sidebar-card li { margin-bottom: 0.3rem; }
+.sidebar-card code {
+  font-family: monospace; font-size: 0.85rem;
+  color: var(--teal-light); background: rgba(62,171,196,0.08);
+  padding: 0.1em 0.35em;
+}
+
+/* --- Status badge --- */
+.status-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.58rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-dim);
+  padding: 0.3rem 0.8rem; margin-bottom: 2rem;
+}
+.status-badge::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+/* --- Colophon --- */
+.prov-colophon {
+  padding: 3.5rem 2.8rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--teal-light);
+  background: rgba(62,171,196,0.03);
+  margin-top: 4rem;
+}
+.prov-colophon p {
+  font-size: 1.05rem; color: var(--parchment-dim); line-height: 1.82;
+}
+.prov-colophon strong { color: var(--parchment); font-weight: 500; }
+
+/* --- Footer --- */
+footer { padding: 3rem 0; text-align:center; border-top:1px solid var(--line); }
+.footer-logo {
+  font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.7rem;
+  letter-spacing:0.3em; text-transform:uppercase; color:var(--parchment-muted); margin-bottom:0.5rem;
+}
+.footer-copy { font-size:0.75rem; color:rgba(240,235,227,0.3); }
+
+@media (max-width:768px) {
+  .prov-hero { padding: 8rem 0 4rem; }
+  .prov-epigraph { padding: 1.6rem 1.8rem; margin: 3rem 0 2.5rem; }
+  .prov-body { padding: 4rem 0 5rem; }
+  .container { padding: 0 1.5rem; }
+}
+</style>
+<meta name="citation_title" content="Provenance">
+<meta name="citation_author" content="Felipe Heemann">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_journal_title" content="Brain Codex">
+<meta name="citation_abstract_html_url" content="https://braincodex.com.br/provenance.html">
+<meta name="citation_language" content="en">
+<meta name="citation_keywords" content="provenance, epistemology, neuroscience, philosophy of science, epistemic chain, verification filters, lexicon, Brain Codex">
+</head>
+<body>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand" aria-label="Brain Codex - Home">
+    <img src="data:image/png;base64,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" alt="Brain Codex icon" class="nav-brand-icon" aria-hidden="true">
+    <div class="nav-brand-text">Brain Codex<span>Neurobioscience &amp; Philosophy</span></div>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Incipit</a></li>
+    <li><a href="index.html#catalog">Catalog</a></li>
+    <li><a href="incisions.html">Inquiries</a></li>
+    <li class="nav-dropdown">
+      <a href="javascript:void(0)" class="nav-dropdown-toggle">Apophthegmata <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:3px;"><polyline points="6 9 12 15 18 9"/></svg></a>
+      <ul class="nav-submenu">
+        <li><a href="foundation.html">Foundation</a></li>
+        <li><a href="annotated_canon.html">Annotated Canon</a></li>
+        <li><a href="epistemic_bedrock.html">Epistemic Bedrock</a></li>
+        <li><a href="pessoa.html">Pessoa</a></li>
+      </ul>
+    </li>
+    <li><a href="provenance.html" class="active">Provenance</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="prov-hero">
+  <div class="container">
+    <div class="reveal">
+      <p class="prov-overline">Methodological Integrity</p>
+      <h1 class="prov-title">Prove&shy;nance</h1>
+      <p class="prov-lede">Every sentence written here carries a verifiable anchor in biology or logic. This page is that anchor made visible &mdash; the epistemic chain, the verification filters, the lexicon of precision.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="reveal">
+    <blockquote class="prov-epigraph">
+      <p>&ldquo;If in any thing I have differed from that which is commonly received, it was with a purpose to proceed <em>in melius</em> &mdash; better &mdash; not <em>in aliud</em> &mdash; merely different. The intention was amendment and proficiency, not change and divergence.&rdquo;</p>
+      <cite>Francis Bacon &middot; <em>De Augmentis Scientiarum</em></cite>
+    </blockquote>
+  </div>
+</div>
+
+<section class="prov-body">
+  <div class="container">
+    <div class="prov-grid">
+
+      <!-- LEFT: main text -->
+      <div class="prov-main">
+
+        <div class="prov-section reveal">
+          <p class="section-label">I</p>
+          <h2>The Epistemic<br><em>Chain of Custody</em></h2>
+          <p>Brain Codex operates exclusively from <strong>primary matter</strong>: original research articles, raw sequencing datasets, canonical philosophical texts. Manuals, review-of-reviews, and market-grade summaries that dilute the argument for commercial accessibility are refused as epistemic input. The chain of custody runs from source to sentence, with no intermediate laundering.</p>
+          <p>The selection of what enters this corpus obeys no metric of institutional impact, no departmental affiliation, and no coalition that trades transdisciplinary scope for the comfort of a single citation index. The curatorial independence is not a preference &mdash; it is a structural condition of the project's validity.</p>
+        </div>
+
+        <hr class="prov-rule">
+
+        <div class="prov-section reveal">
+          <p class="section-label">II</p>
+          <h2>Three<br><em>Verification Filters</em></h2>
+          <p>Before any claim earns the status of a <em>verb</em> inside Brain Codex &mdash; a statement with operative force, not decorative weight &mdash; it must survive three orthogonal filters. A claim that clears only two is an hypothesis, appropriately marked. One that fails all three is noise, and noise is not published.</p>
+
+          <div class="filter-stack">
+            <div class="filter-card">
+              <div class="filter-num">Filter 01 &mdash; Molecular</div>
+              <div class="filter-title">The Proof of Matter</div>
+              <div class="filter-desc">Does the fact resist biophysics and molecular neurobiology? The claim must be consistent with what is known at the level of ion channels, receptor kinetics, signal transduction cascades, and genomic architecture. Phenomenological elegance does not override mechanistic constraint.</div>
+            </div>
+            <div class="filter-card">
+              <div class="filter-num">Filter 02 &mdash; Historical-Philosophical</div>
+              <div class="filter-title">The Proof of Time</div>
+              <div class="filter-desc">Does the concept possess intellectual lineage, or is it a terminological hallucination of modernity? Every construct used in this corpus must be traceable to a tradition of rigorous use &mdash; not merely to a recent paper that adopted the word for rhetorical convenience.</div>
+            </div>
+            <div class="filter-card">
+              <div class="filter-num">Filter 03 &mdash; Phenomenological</div>
+              <div class="filter-title">The Proof of Being</div>
+              <div class="filter-desc">Does the theory survive contact with the first-person structure of conscious experience? Following Merleau-Ponty, no account of cognition that cannot be reconciled with the irreducible fact of embodied, situated experience passes this filter.</div>
+            </div>
+          </div>
+
+          <p style="margin-top:1.8rem;">Provenance is the coordinate where all three vectors converge. When a claim carries a provenance marker, it declares alignment with all three filters. The absence of that marker is itself information.</p>
+        </div>
+
+        <hr class="prov-rule">
+
+        <div class="prov-section reveal">
+          <p class="section-label">III</p>
+          <h2>Lexicon of<br><em>Precision</em></h2>
+          <p>The contemporary academic idiom has developed a remarkable tolerance for semantic drift: terms migrate from their technical contexts into general circulation, return wearing new clothes, and are received as insight rather than recognized as echo. Brain Codex maintains a controlled vocabulary against this entropy.</p>
+          <p>Terms such as <strong>consciousness</strong>, <strong>neuropsychopharmacology</strong>, <strong>fractal dynamics</strong>, and <strong>epigenetic modulation</strong> are used in the strict sense established by the primary literature and the philosophical tradition. Where a term is used in a restricted or technical sense that diverges from common usage, the divergence is explicitly declared. Where a label offers convenience at the cost of precision &mdash; populist psychometric categories, commercially inflected diagnostic groupings, ethnographic generalisations dressed as biology &mdash; the label is refused and the underlying structure described in adequate technical language instead.</p>
+          <p><em>The Lexicon of Precision is under active construction. A dedicated page will enumerate the terms, their operational definitions within this corpus, and the sources that anchor each definition. Status: forthcoming.</em></p>
+        </div>
+
+        <hr class="prov-rule">
+
+        <div class="prov-section reveal">
+          <p class="section-label">IV</p>
+          <h2>Permanent<br><em>Registry</em></h2>
+          <p>Provenance must be auditable. The following infrastructure supports open verification of Brain Codex content:</p>
+          <p><strong>Indexing &amp; Persistent Identifiers</strong> &mdash; Works are registered with DOI allocation via Zenodo and supplementary deposit on SSRN where applicable. The author's ISNI (<code>0000-0005-3022-7377</code>) provides persistent identity resolution across indexing systems including CrossRef and DataCite.</p>
+          <p><strong>Open Neuroscience</strong> &mdash; Where dataset provenance is relevant to an argument, integration with the Canadian Open Neuroscience Platform (CONP) and allied repositories is the preferred mode of citation, in preference to secondary data summaries.</p>
+          <p><strong>The Scriptorium</strong> &mdash; Editorial production under the Matrioska/MEI imprint treats typographic and material form as an extension of intellectual seriousness, not decoration. The physical artifact is itself a provenance document: paper weight, typeface selection, and layout grammar are deliberate choices that encode the register of the argument.</p>
+          <p><em>The Permanent Registry index is under construction. DOI and preprint links will be surfaced here as individual works are registered. Status: forthcoming.</em></p>
+        </div>
+
+        <div class="prov-colophon reveal">
+          <p><strong>Brain Codex does not seek consensus; it seeks precision.</strong> The provenance declared on this page is the commitment that every sentence carries a verifiable anchor in biology or logic, free from the constraints of institutional coalitions that privilege form over substance. Where that anchor cannot be demonstrated, the claim is not published &mdash; it is held, interrogated, and either verified or discarded. The chain of custody does not begin here. It begins at the primary source. This page is merely the declaration that the chain exists and that its integrity is the project's non-negotiable condition.</p>
+        </div>
+
+      </div><!-- /prov-main -->
+
+      <!-- RIGHT: sidebar -->
+      <aside class="prov-sidebar">
+
+        <div class="sidebar-card reveal">
+          <h3>Page Status</h3>
+          <div class="status-badge">Under Construction</div>
+          <p>This page is a structural placeholder. Content is being migrated and authored progressively. Sections marked <em>forthcoming</em> will be populated as the corresponding infrastructure is completed.</p>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <h3>Editorial Commitments</h3>
+          <ul>
+            <li>Primary sources only</li>
+            <li>No institutional affiliations</li>
+            <li>No metric-driven curation</li>
+            <li>Explicit filter declarations</li>
+            <li>Semantic drift refused</li>
+            <li>DOI / ISNI registration</li>
+            <li>Open Science alignment</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <h3>Registered Identity</h3>
+          <p><strong>ISNI</strong><br><code>0000-0005-3022-7377</code></p>
+          <p style="margin-top:0.8rem;"><strong>Publisher</strong><br>Brain Codex<br>Neurobioscience &amp; Philosophy</p>
+          <p style="margin-top:0.8rem;"><strong>Imprint</strong><br>Matrioska / MEI</p>
+        </div>
+
+        <div class="sidebar-card reveal">
+          <h3>Sections in this Page</h3>
+          <ul>
+            <li>I. Epistemic Chain of Custody</li>
+            <li>II. Three Verification Filters</li>
+            <li>III. Lexicon of Precision</li>
+            <li>IV. Permanent Registry</li>
+            <li>V. Methodological Colophon</li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Brain Codex</div>
+  <div class="footer-copy">&copy; 2026 Felipe Heemann &mdash; All rights reserved</div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+if(window.location.protocol==='file:'){reveals.forEach(el=>el.classList.add('visible'));}else{const observer=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});},{threshold:0.08});reveals.forEach(el=>observer.observe(el));}
+</script>
+</body>
+</html>
